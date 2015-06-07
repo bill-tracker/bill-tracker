@@ -3,9 +3,13 @@
 {% block title %}Annotation{% endblock %}
 
 {% block content %}
+  <p>
   Annotation: <br />
   {{ annotation.text }} <br />
+  </p>
 
+  <p>
+  Comments:
   {% if comment_list %}
     <ul>
       {% for comment in comment_list %}
@@ -22,6 +26,7 @@
   {% else %}
     <p>you haven't added any comments yet!</p>
   {% endif %}
+  </p>
 
   <form action="/addcomment/" method="post" class="form" id="formaddcomment">
     {% csrf_token %}

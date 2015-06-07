@@ -3,9 +3,14 @@
 {% block title %}Bill{% endblock %}
 
 {% block content %}
+  <p>
   Bill: <br />
-  {{ bill.text }} <br />
+  {{ bill.text }}
+  <a href="/bills/{{ bill.id }}/edit/">Edit</a>
+  </p>
 
+  <p>
+  Annotations:
   {% if annotation_list %}
     <ul>
       {% for annotation in annotation_list %}
@@ -22,6 +27,7 @@
   {% else %}
     <p>you haven't added any annotations yet!</p>
   {% endif %}
+  </p>
 
   <form action="/addannotation/" method="post" class="form"
     id="formaddannotation">

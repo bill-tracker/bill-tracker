@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Add Bill{% endblock %}
+
+{% block content %}
+  {% if method == 'add' %}
+  <h1>Add a New Bill</h1>
+  {% elif method == 'edit' %}
+  <h1>Edit Bill</h1>
+  {% endif %}
+
+
+  {% if method == 'add' %}
+  <form action="/addbill/" method="post" class="form">
+  {% elif method == 'edit' %}
+  <form action="/bills/{{ id }}/edit/" method="post" class="form">
+  {% endif %}
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if method == 'add' %}
+    <input type="submit" value="Add Bill" />
+    {% elif method == 'edit' %}
+    <input type="submit" value="Edit Bill" />
+    {% endif %}
+  </form>
+{% endblock %}

@@ -19,11 +19,13 @@ from annotation_app import views
 urlpatterns = [
     url(r'^index/$', views.index),
     url(r'^$', views.index),
-    url(r'^addbill/$', views.add_bill),
+    url(r'^bills/$', views.bill_list, name='bills'),
+    url(r'^addbill/$', views.add_bill, name='add_bill'),
     url(r'^bills/(?P<bill_id>\d+)/$', views.bill, name='bill'),
+    url(r'^bills/(?P<bill_id>\d+)/edit/$', views.edit_bill, name='edit_bill'),
     url(r'^addannotation/$', views.add_annotation, name='add_annotation'),
     url(r'^annotations/(?P<annotation_id>\d+)/$', views.annotation,
       name='annotation'),
-    url(r'^addcomment/$', views.add_comment),
+    url(r'^addcomment/$', views.add_comment, name='add_comment'),
     url(r'^comments/(?P<comment_id>\d+)/$', views.comment, name='comment'),
 ]

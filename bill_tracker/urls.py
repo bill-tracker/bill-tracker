@@ -27,7 +27,6 @@ urlpatterns = [
 
   url(r'^bills/', include('annotation_app.routes.bills_routes')),
   # Deprecated
-  url(r'^get_bill_list/$', annote_app.views_deprecated.get_bill_list),
   url(r'^addbill/$', annote_app.controllers.bills_controller.pull_bill),
 
   url(r'^authors/', include('annotation_app.routes.authors_routes')),

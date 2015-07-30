@@ -22,7 +22,6 @@ urlpatterns = [
   url(r'^$', bills, name='bills'),
   url(r'^get-bill-info/$', bills_controller.get_bill_info,
     name='get_bill_info'),
-  url(r'^get_bill_list/$', views_deprecated.get_bill_list, name='get_bill_list'),
   # Deprecated
   url(r'^(?P<bill_id>\d+)/$', bills_controller.redirect_get_one, name='bill'),
   url(r'^(?P<bill_slug>[SHsh][Bb]\d+)/$', bills_controller.get_one,

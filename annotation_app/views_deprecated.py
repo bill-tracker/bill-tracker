@@ -6,7 +6,12 @@ from annotation_app.models import Bill, Senator, Subject
 
 
 def bill_list(request):
-  return render(request, 'bill-list.html')
+  #pipes all bills to front end.
+  if (request.is_ajax()):
+    data = serializers.serialize("json", Bill.objects.all())
+    return HttpResponse(data)
+  else:
+    return render(request, 'bill-list.html')
 
 def subject_list(request):
   return render(request, 'subject-list.html')
@@ -47,10 +52,7 @@ def subject(request, subject_id):
     raise Http404
   context = {'subject': subject}
   return render(request, 'subject.html', context)
-#pipes all bills to front end.
-def get_bill_list(request):
-  data = serializers.serialize("json", Bill.objects.all())
-  return HttpResponse(data)
+
 # pipes all subjects to front end.
 def get_subject_list(request):
   data = serializers.serialize("json", Subject.objects.all())
